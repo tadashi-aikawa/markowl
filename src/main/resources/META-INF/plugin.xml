@@ -4,7 +4,13 @@
     <vendor email="syou.maman@gmail.com" url="http://mimizou.mamansoft.net/">MAMANSOFT</vendor>
 
     <description><![CDATA[
-    Markdown extended plugin for owl🦉
+    Markdown extended plugin for Jet Brains IDEs and owl🦉
+
+    [Features]
+    * Format Table
+    * Draw H1/H2 Line
+
+    See https://github.com/tadashi-aikawa/markowl
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
