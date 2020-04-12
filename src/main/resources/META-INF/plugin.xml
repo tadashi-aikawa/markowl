@@ -1,16 +1,17 @@
 <idea-plugin>
     <id>net.mamansoft.markowl</id>
     <name>Markowl</name>
-    <vendor email="syou.maman@gmail.com" url="http://mimizou.mamansoft.net/">MAMANSOFT</vendor>
+    <vendor url="http://mimizou.mamansoft.net/">tadashi-aikawa</vendor>
 
     <description><![CDATA[
-    Markdown extended plugin for Jet Brains IDEs and owl🦉
+    <div style="margin-bottom: 15px;">Markdown extended plugin for Jet Brains IDEs and owl🦉</div>
 
-    [Features]
-    * Format Table
-    * Draw H1/H2 Line
+    <b>[Features]</b>
+    <ul>
+      <li>Format Table</li>
+      <li>Draw H1/H2 Line</li>
+    </ul>
 
-    See https://github.com/tadashi-aikawa/markowl
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
