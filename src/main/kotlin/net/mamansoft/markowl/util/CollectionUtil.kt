@@ -9,4 +9,3 @@ fun inverse(rows: List<List<String>>): List<List<String>> {
     }
     return columns
 }
-

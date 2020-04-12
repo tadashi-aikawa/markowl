@@ -7,14 +7,14 @@ import net.mamansoft.markowl.domain.OwlDocument
 import net.mamansoft.markowl.util.width
 
 class AddHeader2BorderAction : AnAction() {
-    override fun update(e: AnActionEvent) {
-        e.presentation.isEnabledAndVisible = e.project != null && e.getData(CommonDataKeys.EDITOR) != null
-    }
+  override fun update(e: AnActionEvent) {
+    e.presentation.isEnabledAndVisible = e.project != null && e.getData(CommonDataKeys.EDITOR) != null
+  }
 
-    override fun actionPerformed(e: AnActionEvent) {
-        val doc = OwlDocument(e)
+  override fun actionPerformed(e: AnActionEvent) {
+    val doc = OwlDocument(e)
 
-        val border = "-".repeat(width(doc.currentLineText))
-        doc.safeInsertToNextLine("${border}\n")
-    }
+    val border = "-".repeat(width(doc.currentLineText))
+    doc.safeInsertToNextLine("${border}\n")
+  }
 }
