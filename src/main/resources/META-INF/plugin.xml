@@ -17,18 +17,18 @@
 
     <actions>
         <action id="net.mamansoft.markowl.action.markdown.FormatTableAction"
-                class="net.mamansoft.markowl.action.markdown.FormatTableAction" text="Format Markdown Table"
+                class="net.mamansoft.markowl.action.markdown.FormatTableAction" text="Markowl: Format Table"
                 description="Format markdown table">
             <keyboard-shortcut keymap="$default" first-keystroke="alt SEMICOLON"/>
         </action>
-        <action id="net.mamansoft.markowl.action.markdown.AddHeader1BorderAction"
-                class="net.mamansoft.markowl.action.markdown.AddHeader1BorderAction" text="Add Header1 Border"
-                description="Add header lv 1 border (====)">
+        <action id="net.mamansoft.markowl.action.markdown.DrawH1LineAction"
+                class="net.mamansoft.markowl.action.markdown.DrawH1LineAction" text="Markowl: Draw H1 Line"
+                description="Draw a line(===) under a H1 title">
             <keyboard-shortcut keymap="$default" first-keystroke="alt shift MINUS"/>
         </action>
-        <action id="net.mamansoft.markowl.action.markdown.AddHeader2BorderAction"
-                class="net.mamansoft.markowl.action.markdown.AddHeader2BorderAction" text="Add Header2 Border"
-                description="Add header lv 2 border (----)">
+        <action id="net.mamansoft.markowl.action.markdown.DrawH2LineAction"
+                class="net.mamansoft.markowl.action.markdown.DrawH2LineAction" text="Markowl: Draw H2 Line"
+                description="Draw a line(---) under a H2 title">
             <keyboard-shortcut keymap="$default" first-keystroke="alt MINUS"/>
         </action>
     </actions>

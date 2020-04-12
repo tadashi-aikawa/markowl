@@ -6,7 +6,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys
 import net.mamansoft.markowl.domain.OwlDocument
 import net.mamansoft.markowl.util.width
 
-class AddHeader2BorderAction : AnAction() {
+class DrawH2LineAction : AnAction() {
   override fun update(e: AnActionEvent) {
     e.presentation.isEnabledAndVisible = e.project != null && e.getData(CommonDataKeys.EDITOR) != null
   }
