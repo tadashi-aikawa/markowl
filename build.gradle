@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'net.mamansoft'
-version '0.1'
+version '0.2'
 
 sourceCompatibility = 1.8
 
@@ -31,7 +31,7 @@ compileTestKotlin {
 patchPluginXml {
     changeNotes """
       <ul>
-        <li>v0.1 (2020-04-12): First release</li>
+        <li>:memo: Create documentations</li>
       </ul>
     """
 }
