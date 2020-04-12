@@ -1,0 +1,35 @@
+<idea-plugin>
+    <id>net.mamansoft.markowl</id>
+    <name>Markowl</name>
+    <vendor email="syou.maman@gmail.com" url="http://mimizou.mamansoft.net/">MAMANSOFT</vendor>
+
+    <description><![CDATA[
+    Markdown extended plugin for owl🦉
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <action id="net.mamansoft.markowl.action.markdown.FormatTableAction"
+                class="net.mamansoft.markowl.action.markdown.FormatTableAction" text="Format Markdown Table"
+                description="Format markdown table">
+            <keyboard-shortcut keymap="$default" first-keystroke="alt SEMICOLON"/>
+        </action>
+        <action id="net.mamansoft.markowl.action.markdown.AddHeader1BorderAction"
+                class="net.mamansoft.markowl.action.markdown.AddHeader1BorderAction" text="Add Header1 Border"
+                description="Add header lv 1 border (====)">
+            <keyboard-shortcut keymap="$default" first-keystroke="alt shift MINUS"/>
+        </action>
+        <action id="net.mamansoft.markowl.action.markdown.AddHeader2BorderAction"
+                class="net.mamansoft.markowl.action.markdown.AddHeader2BorderAction" text="Add Header2 Border"
+                description="Add header lv 2 border (----)">
+            <keyboard-shortcut keymap="$default" first-keystroke="alt MINUS"/>
+        </action>
+    </actions>
+</idea-plugin>
