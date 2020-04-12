@@ -1,7 +1,7 @@
 Markowl
 =======
 
-Markdown extended plugin for Jet Brains IDEs and owl🦉
+Markdown extended plugin for JetBrains IDEs and owl🦉
 
 Features
 --------
