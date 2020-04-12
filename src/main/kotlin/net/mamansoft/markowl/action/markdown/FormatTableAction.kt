@@ -25,7 +25,7 @@ fun formatTable(tableStr: String): String {
 
 fun getRangeAsTable(doc: OwlDocument): TextRange {
     val startTableLine = (doc.currentLine downTo 0)
-        .find { doc.getTextByLine(it).isEmpty() }?.plus(1) ?: 1
+        .find { doc.getTextByLine(it).isEmpty() }?.plus(1) ?: 0
     val endTableLine = (doc.currentLine..doc.lastLine)
         .find { doc.getTextByLine(it).isEmpty() }?.minus(1) ?: doc.lastLine
 
