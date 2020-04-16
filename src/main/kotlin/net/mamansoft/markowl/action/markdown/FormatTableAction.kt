@@ -6,19 +6,23 @@ import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.util.TextRange
 import net.mamansoft.markowl.domain.OwlDocument
 import net.mamansoft.markowl.util.countWideWord
+import net.mamansoft.markowl.util.fillEmpty
 import net.mamansoft.markowl.util.inverse
 import net.mamansoft.markowl.util.width
 
 fun formatTable(tableStr: String): String {
     val rows = tableStr.split("\n")
         .map { it.trim('|').split('|').map { v -> v.trim() } }
+    val maxColumnNums = rows.map { it.size }.max() ?: 0
     val columns = inverse(rows)
     val columnWidths = columns.map { it.map(::width).max()?.coerceAtLeast(3) ?: 3 }
 
     return rows.mapIndexed { rowIndex, row ->
-        when (rowIndex) {
-            1 -> row.mapIndexed { i, _ -> "-".repeat(columnWidths[i]) }
-            else -> row.mapIndexed { i, value -> "%-${columnWidths[i].minus(countWideWord(value))}s".format(value) }
+        row.fillEmpty(maxColumnNums).mapIndexed { i, value ->
+          when (rowIndex) {
+            1 -> "-".repeat(columnWidths[i])
+            else -> "%-${columnWidths[i].minus(countWideWord(value))}s".format(value)
+          }
         }
     }.joinToString("\n") { row -> "| ${row.joinToString(" | ")} |" }
 }
