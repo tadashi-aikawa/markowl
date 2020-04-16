@@ -13,7 +13,7 @@ fun formatTable(tableStr: String): String {
     val rows = tableStr.split("\n")
         .map { it.trim('|').split('|').map { v -> v.trim() } }
     val columns = inverse(rows)
-    val columnWidths = columns.map { it.map(::width).max() ?: 0 }
+    val columnWidths = columns.map { it.map(::width).max()?.coerceAtLeast(3) ?: 3 }
 
     return rows.mapIndexed { rowIndex, row ->
         when (rowIndex) {
