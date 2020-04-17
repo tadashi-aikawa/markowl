@@ -20,22 +20,25 @@ class OwlDocument constructor(e: AnActionEvent) {
         get() = this.editor.caretModel.currentCaret
     val lastLine: Int
         get() = this.document.lineCount - 1
+    val lastLineOffset: Int
+        get() = DocumentUtil.getLineTextRange(this.document, this.lastLine).endOffset
     val currentLine: Int
         get() = this.currentCaret.selectionEndPosition.line
+    val isLastLine: Boolean
+        get() = this.currentLine == this.lastLine
     val currentLineText: String
         get() = getTextByLine(this.currentLine)
+    val currentLineEndOffset: Int
+        get() = DocumentUtil.getLineEndOffset(this.currentCaret.selectionEnd, this.editor.document)
     val nextLineOffset: Int
-        get() = DocumentUtil.getLineEndOffset(this.currentCaret.selectionEnd, this.editor.document).plus(1)
+        get() = this.currentLineEndOffset.plus(1)
     val nextLineRange: TextRange
-        get() = TextRange.create(
-            this.nextLineOffset,
-            DocumentUtil.getLineEndOffset(this.nextLineOffset, this.editor.document)
-        )
-    val nextLineText: String
-        get() = getTextByRange(this.nextLineRange)
+        get() =  DocumentUtil.getLineTextRange(this.document, this.currentLine + 1)
+    val nextLineText: String?
+        get() = if (this.isLastLine) null else this.getTextByRange(this.nextLineRange)
 
 
-    fun getTextByRange(range: TextRange) = this.document.getText(range)
+    fun getTextByRange(range: TextRange): String = this.document.getText(range)
     fun getTextByLine(line: Int): String = this.document.getText(DocumentUtil.getLineTextRange(this.document, line))
     fun getLineStartOffset(line: Int): Int = this.document.getLineStartOffset(line)
     fun getLineEndOffset(line: Int): Int = this.document.getLineEndOffset(line)
@@ -50,9 +53,12 @@ class OwlDocument constructor(e: AnActionEvent) {
 
     fun safeInsertToNextLine(text: String) {
         WriteCommandAction.runWriteCommandAction(this.project) {
-            this.editor.document.insertString(this.nextLineOffset, text)
+            this.editor.document.insertString(currentLineEndOffset, "\n${text}")
         }
     }
 
+    fun moveEOF() {
+        this.currentCaret.moveToOffset(this.lastLineOffset)
+    }
 }
 
