@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'net.mamansoft'
-version '0.3.0'
+version '0.4.0'
 
 sourceCompatibility = 1.8
 
@@ -31,8 +31,7 @@ compileTestKotlin {
 patchPluginXml {
     changeNotes """
       <ul>
-        <li>[feature] Complement columns of table automatically</li>
-        <li>[bug] The format is incorrect if the maximum number of characters in a columns is 2 or less</li>
+        <li>[feature] Overwrite header line if exists</li>
       </ul>
     """
 }
