@@ -41,15 +41,10 @@ gradle buildPlugin
 
 ### Release
 
+- [ ] Update `plugin.xml` (OPTIONAL)
 - [ ] Update `build.gradle`
-    - [ ] version
     - [ ] changeNotes
-- [ ] Build distribution
-- [ ] Commit
-- [ ] Tagged
-- [ ] Push
-    - [ ] With `--tags`
-    - [ ] Without `--tags`
+- [ ] make release version=x.y.z
 - [ ] Upload `build/distributions/markowl-${version}.zip` to [JetBrains market]
 
 [JetBrains market]: https://plugins.jetbrains.com/plugin/edit?pluginId=14116
