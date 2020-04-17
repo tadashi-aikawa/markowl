@@ -26,6 +26,14 @@ class OwlDocument constructor(e: AnActionEvent) {
         get() = getTextByLine(this.currentLine)
     val nextLineOffset: Int
         get() = DocumentUtil.getLineEndOffset(this.currentCaret.selectionEnd, this.editor.document).plus(1)
+    val nextLineRange: TextRange
+        get() = TextRange.create(
+            this.nextLineOffset,
+            DocumentUtil.getLineEndOffset(this.nextLineOffset, this.editor.document)
+        )
+    val nextLineText: String
+        get() = getTextByRange(this.nextLineRange)
+
 
     fun getTextByRange(range: TextRange) = this.document.getText(range)
     fun getTextByLine(line: Int): String = this.document.getText(DocumentUtil.getLineTextRange(this.document, line))
@@ -38,10 +46,13 @@ class OwlDocument constructor(e: AnActionEvent) {
         }
     }
 
+    fun safeReplaceToNextLine(text: String) = this.safeReplace(nextLineRange, text)
+
     fun safeInsertToNextLine(text: String) {
         WriteCommandAction.runWriteCommandAction(this.project) {
             this.editor.document.insertString(this.nextLineOffset, text)
         }
     }
+
 }
 

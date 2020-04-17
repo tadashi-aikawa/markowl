@@ -15,6 +15,10 @@ class DrawH1LineAction : AnAction() {
         val doc = OwlDocument(e)
 
         val border = "=".repeat(width(doc.currentLineText))
-        doc.safeInsertToNextLine("${border}\n")
+        if (Regex("^(=+|-+)$").matches(doc.nextLineText)) {
+            doc.safeReplaceToNextLine(border)
+        } else {
+            doc.safeInsertToNextLine("${border}\n")
+        }
     }
 }
