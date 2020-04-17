@@ -35,4 +35,4 @@ release: guard-version build ## make release version=x.y.z
 	@git push
 
 	@echo "All Successed!!"
-	@echo "Upload build/distributions/markowl-$(version).zip to [JetBrains market]"
+	@echo "Upload build/distributions/markowl-$(version).zip to https://plugins.jetbrains.com/plugin/edit?pluginId=14116"
