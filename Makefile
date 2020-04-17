@@ -18,10 +18,10 @@ guard-%:
 .PHONY: release
 release: guard-version build ## make release version=x.y.z
 	@echo 1. Preincrement version
-	@sed -ri "s/version .+/version '$(version)'/g" build.gradle
+	@sed -ri "s/^version .+/version '$(version)'/g" build.gradle
 
 	@echo 2. Build
-	@gradle buildPlugin
+	@gradlew.bat buildPlugin
 
 	@echo 3. Commit
 	@git add build.gradle
@@ -35,4 +35,4 @@ release: guard-version build ## make release version=x.y.z
 	@git push
 
 	@echo "All Successed!!"
-	@echo "Upload `build/distributions/markowl-$(version).zip` to [JetBrains market]"
+	@echo "Upload build/distributions/markowl-$(version).zip to [JetBrains market]"
