@@ -3,25 +3,22 @@ Markowl
 
 Markdown extended plugin for JetBrains IDEs and owl🦉
 
+![](docs/images/demo.gif)
+
+
 Features
 --------
 
-* Format Table
-* Draw H1/H2 Line
+| Action            | Demo                                  | Default Shortcut |
+| ----------------- | ------------------------------------- | ---------------- |
+| Format Table      | ![](docs/images/format-table.gif)     | `Alt + ;`        |
+| Draw H1 Line      | ![](docs/images/draw-header-line.gif) | `Alt + -`        |
+| Draw H2 Line      | ![](docs/images/draw-header-line.gif) | `Alt + =`        |
 
 Support encodings
 
 * UTF-8
 * SJIS
-
-
-### Format Table
-
-![](docs/images/format-table.gif)
-
-### Draw H1/H2 Line
-
-![](docs/images/draw-header-line.gif)
 
 
 For developers
