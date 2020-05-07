@@ -13,3 +13,11 @@ fun inverse(rows: List<List<String>>): List<List<String>> {
   }
   return columns
 }
+
+inline fun <reified T : Any> List<T>.fillUntil(element: T, maxSize: Int): List<T> {
+    return this + List<T>(maxSize - this.size) { element }
+}
+
+fun List<String>.fillEmpty(maxSize: Int): List<String> {
+    return this.fillUntil("", maxSize)
+}

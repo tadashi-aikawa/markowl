@@ -13,12 +13,3 @@ fun width(codePoint: Int): Int = when (codePoint) {
 fun width(ch: Char): Int = width(ch.toInt())
 fun width(str: String): Int = str.sumBy(::width)
 fun countWideWord(str: String): Int = str.count { width(it) == 2 }
-
-// Dark powered function
-inline fun <reified T : Any> List<T>.fillUntil(element: T, maxSize: Int): List<T> {
-  return this + List<T>(maxSize - this.size) { element }
-}
-
-fun List<String>.fillEmpty(maxSize: Int): List<String> {
-  return this.fillUntil("", maxSize)
-}
