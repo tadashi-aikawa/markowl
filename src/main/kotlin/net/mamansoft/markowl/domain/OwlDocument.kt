@@ -23,13 +23,13 @@ class OwlDocument constructor(e: AnActionEvent) {
     val lastLineOffset: Int
         get() = DocumentUtil.getLineTextRange(this.document, this.lastLine).endOffset
     val currentLine: Int
-        get() = this.currentCaret.selectionEndPosition.line
+        get() = this.editor.visualToLogicalPosition(this.currentCaret.selectionEndPosition).line
     val isLastLine: Boolean
         get() = this.currentLine == this.lastLine
     val currentLineText: String
         get() = getTextByLine(this.currentLine)
     val currentLineEndOffset: Int
-        get() = DocumentUtil.getLineEndOffset(this.currentCaret.selectionEnd, this.editor.document)
+        get() = DocumentUtil.getLineEndOffset(this.currentCaret.offset, this.editor.document)
     val nextLineOffset: Int
         get() = this.currentLineEndOffset.plus(1)
     val nextLineRange: TextRange
