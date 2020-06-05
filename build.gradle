@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'net.mamansoft'
-version '0.4.2'
+version '0.5.0'
 
 sourceCompatibility = 1.8
 
@@ -31,7 +31,7 @@ compileTestKotlin {
 patchPluginXml {
     changeNotes """
       <ul>
-        <li>[bug] 🐛 Fix bug that not working when some lines are collapsed.</li>
+        <li>[improvement] ✨ Determine column width without header line</li>
       </ul>
     """
 }
