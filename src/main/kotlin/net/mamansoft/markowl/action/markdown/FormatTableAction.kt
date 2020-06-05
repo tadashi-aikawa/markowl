@@ -15,14 +15,14 @@ fun formatTable(tableStr: String): String {
         .map { it.trim('|').split('|').map { v -> v.trim() } }
     val maxColumnNums = rows.map { it.size }.max() ?: 0
     val columns = inverse(rows)
-    val columnWidths = columns.map { it.map(::width).max()?.coerceAtLeast(3) ?: 3 }
+    val columnWidths = columns.map { it.filterIndexed { i, _ -> i != 1 }.map(::width).max()?.coerceAtLeast(3) ?: 3 }
 
     return rows.mapIndexed { rowIndex, row ->
         row.fillEmpty(maxColumnNums).mapIndexed { i, value ->
-          when (rowIndex) {
-            1 -> "-".repeat(columnWidths[i])
-            else -> "%-${columnWidths[i].minus(countWideWord(value))}s".format(value)
-          }
+            when (rowIndex) {
+                1 -> "-".repeat(columnWidths[i])
+                else -> "%-${columnWidths[i].minus(countWideWord(value))}s".format(value)
+            }
         }
     }.joinToString("\n") { row -> "| ${row.joinToString(" | ")} |" }
 }
