@@ -1,9 +1,9 @@
 <idea-plugin>
-    <id>net.mamansoft.markowl</id>
-    <name>Markowl</name>
-    <vendor url="http://mimizou.mamansoft.net/">tadashi-aikawa</vendor>
+  <id>net.mamansoft.markowl</id>
+  <name>Markowl</name>
+  <vendor url="http://mimizou.mamansoft.net/">tadashi-aikawa</vendor>
 
-    <description><![CDATA[
+  <description><![CDATA[
     <div style="margin-bottom: 15px;">Markdown extended plugin for JetBrains IDEs and owl🦉</div>
 
     <b>[Features]</b>
@@ -14,29 +14,30 @@
 
     ]]></description>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
-    <depends>com.intellij.modules.platform</depends>
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <idea-version since-build="191"/>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
-    </extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
 
-    <actions>
-        <action id="net.mamansoft.markowl.action.markdown.FormatTableAction"
-                class="net.mamansoft.markowl.action.markdown.FormatTableAction" text="Markowl: Format Table"
-                description="Format markdown table">
-            <keyboard-shortcut keymap="$default" first-keystroke="alt SEMICOLON"/>
-        </action>
-        <action id="net.mamansoft.markowl.action.markdown.DrawH1LineAction"
-                class="net.mamansoft.markowl.action.markdown.DrawH1LineAction" text="Markowl: Draw H1 Line"
-                description="Draw a line(===) under a H1 title">
-            <keyboard-shortcut keymap="$default" first-keystroke="alt shift MINUS"/>
-        </action>
-        <action id="net.mamansoft.markowl.action.markdown.DrawH2LineAction"
-                class="net.mamansoft.markowl.action.markdown.DrawH2LineAction" text="Markowl: Draw H2 Line"
-                description="Draw a line(---) under a H2 title">
-            <keyboard-shortcut keymap="$default" first-keystroke="alt MINUS"/>
-        </action>
-    </actions>
+  <actions>
+    <action id="net.mamansoft.markowl.action.markdown.FormatTableAction"
+            class="net.mamansoft.markowl.action.markdown.FormatTableAction" text="Markowl: Format Table"
+            description="Format markdown table">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt SEMICOLON"/>
+    </action>
+    <action id="net.mamansoft.markowl.action.markdown.DrawH1LineAction"
+            class="net.mamansoft.markowl.action.markdown.DrawH1LineAction" text="Markowl: Draw H1 Line"
+            description="Draw a line(===) under a H1 title">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt shift MINUS"/>
+    </action>
+    <action id="net.mamansoft.markowl.action.markdown.DrawH2LineAction"
+            class="net.mamansoft.markowl.action.markdown.DrawH2LineAction" text="Markowl: Draw H2 Line"
+            description="Draw a line(---) under a H2 title">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt MINUS"/>
+    </action>
+  </actions>
 </idea-plugin>
