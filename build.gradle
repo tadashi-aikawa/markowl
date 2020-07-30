@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'net.mamansoft'
-version '0.5.2'
+version '0.6.0'
 
 sourceCompatibility = 1.8
 
@@ -33,7 +33,7 @@ compileTestKotlin {
 patchPluginXml {
   changeNotes """
       <ul>
-        <li>[bugfix] 🐛 Fix a bug that can not install except for version 2020.1</li>
+        <li>[feature] 🆕 Add support for Cyrillic</li>
       </ul>
     """
 }
