@@ -12,7 +12,7 @@ import com.intellij.util.DocumentUtil
 
 
 class OwlDocument constructor(e: AnActionEvent) {
-    private val project: Project = e.getRequiredData(CommonDataKeys.PROJECT)
+    val project: Project = e.getRequiredData(CommonDataKeys.PROJECT)
     private val editor: Editor = e.getRequiredData(CommonDataKeys.EDITOR)
     private val document: Document = editor.document
 
@@ -27,7 +27,7 @@ class OwlDocument constructor(e: AnActionEvent) {
     val isLastLine: Boolean
         get() = this.currentLine == this.lastLine
     val currentLineRange: TextRange
-        get() =  DocumentUtil.getLineTextRange(this.document, this.currentLine)
+        get() = DocumentUtil.getLineTextRange(this.document, this.currentLine)
     val currentLineText: String
         get() = getTextByLine(this.currentLine)
     val currentLineStartOffset: Int
@@ -37,17 +37,17 @@ class OwlDocument constructor(e: AnActionEvent) {
     val nextLineOffset: Int
         get() = this.currentLineEndOffset.plus(1)
     val nextLineRange: TextRange
-        get() =  DocumentUtil.getLineTextRange(this.document, this.currentLine + 1)
+        get() = DocumentUtil.getLineTextRange(this.document, this.currentLine + 1)
     val nextLineText: String?
         get() = if (this.isLastLine) null else this.getTextByRange(this.nextLineRange)
 
     // Specific domains
     val hasCurrentLineHeaderPrefix: Boolean
         get() = Regex("^#{1,5} .+$").matches(this.currentLineText)
-    val isNextLineHeaderLine: Boolean
-        get() = Regex("^(=+|-+)$").matches(this.nextLineText!!)
     val hasNextLine: Boolean
         get() = this.nextLineText != null
+    val isNextLineHeaderLine: Boolean
+        get() = if (this.hasNextLine) Regex("^(=+|-+)$").matches(this.nextLineText!!) else false
     // ...
 
     fun getTextByRange(range: TextRange): String = this.document.getText(range)
@@ -55,32 +55,26 @@ class OwlDocument constructor(e: AnActionEvent) {
     fun getLineStartOffset(line: Int): Int = this.document.getLineStartOffset(line)
     fun getLineEndOffset(line: Int): Int = this.document.getLineEndOffset(line)
 
-    fun safeReplace(range: TextRange, text: String) {
-        WriteCommandAction.runWriteCommandAction(this.project) {
-            this.editor.document.replaceString(range.startOffset, range.endOffset, text)
-        }
+    fun action(executor: () -> Unit) = WriteCommandAction.runWriteCommandAction(this.project, executor)
+
+    fun replace(range: TextRange, text: String) {
+        this.editor.document.replaceString(range.startOffset, range.endOffset, text)
     }
 
-    fun safeReplaceToNextLine(text: String) = this.safeReplace(nextLineRange, text)
+    fun replaceToNextLine(text: String) = this.replace(nextLineRange, text)
 
-    fun safeDelete(range: TextRange) {
-        WriteCommandAction.runWriteCommandAction(this.project) {
-            this.editor.document.deleteString(range.startOffset, range.endOffset)
-        }
+    fun delete(range: TextRange) {
+        this.editor.document.deleteString(range.startOffset, range.endOffset)
     }
 
-    fun safeDeleteNextLine() = this.safeDelete(nextLineRange)
+    fun deleteNextLine() = this.delete(TextRange(nextLineRange.startOffset - 1, nextLineRange.endOffset))
 
-    fun safeInsertToStartOfLine(text: String) {
-        WriteCommandAction.runWriteCommandAction(this.project) {
-            this.editor.document.insertString(currentLineStartOffset, text)
-        }
+    fun insertToStartOfLine(text: String) {
+        this.editor.document.insertString(currentLineStartOffset, text)
     }
 
-    fun safeInsertToNextLine(text: String) {
-        WriteCommandAction.runWriteCommandAction(this.project) {
-            this.editor.document.insertString(currentLineEndOffset, "\n${text}")
-        }
+    fun insertToNextLine(text: String) {
+        this.editor.document.insertString(currentLineEndOffset, "\n${text}")
     }
 
     fun moveEOF() {
@@ -89,10 +83,11 @@ class OwlDocument constructor(e: AnActionEvent) {
 
     // Specific domains
     fun removeCurrentLineHeaderPrefix() {
-        safeReplace(this.currentLineRange, this.currentLineText.replace(Regex("^#{1,5} "), ""))
+        replace(currentLineRange, currentLineText.replace(Regex("^#{1,5} "), ""))
     }
+
     fun insertCurrentLineHeaderPrefix(level: Int) {
-        safeInsertToStartOfLine("#".repeat(level) + " ")
+        insertToStartOfLine("#".repeat(level) + " ")
     }
     // ...
 }

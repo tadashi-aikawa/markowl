@@ -44,7 +44,9 @@ class FormatTableAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val doc = OwlDocument(e)
 
-        val tableRange = getRangeAsTable(doc)
-        doc.safeReplace(tableRange, formatTable(doc.getTextByRange(tableRange)))
+        doc.action {
+            val tableRange = getRangeAsTable(doc)
+            doc.replace(tableRange, formatTable(doc.getTextByRange(tableRange)))
+        }
     }
 }

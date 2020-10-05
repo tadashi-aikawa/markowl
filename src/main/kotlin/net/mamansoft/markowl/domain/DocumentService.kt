@@ -3,32 +3,36 @@ package net.mamansoft.markowl.domain
 import net.mamansoft.markowl.util.width
 
 fun drawHeaderLine(doc: OwlDocument, lineSymbol: String) {
-    if (doc.hasCurrentLineHeaderPrefix) {
-        doc.removeCurrentLineHeaderPrefix()
-    }
+    doc.action() {
+        if (doc.hasCurrentLineHeaderPrefix) {
+            doc.removeCurrentLineHeaderPrefix()
+        }
 
-    val border = lineSymbol.repeat(width(doc.currentLineText))
-    if (!doc.hasNextLine) {
-        doc.safeInsertToNextLine("")
-        doc.safeInsertToNextLine(border)
-        doc.moveEOF()
-        return
-    }
+        val border = lineSymbol.repeat(width(doc.currentLineText))
+        if (!doc.hasNextLine) {
+            doc.insertToNextLine("")
+            doc.insertToNextLine(border)
+            doc.moveEOF()
+            return@action
+        }
 
-    if (doc.isNextLineHeaderLine) {
-        doc.safeReplaceToNextLine(border)
-    } else {
-        doc.safeInsertToNextLine(border)
+        if (doc.isNextLineHeaderLine) {
+            doc.replaceToNextLine(border)
+        } else {
+            doc.insertToNextLine(border)
+        }
     }
 }
 
 fun drawHeaderPrefix(doc: OwlDocument, level: Int) {
-    if (doc.hasCurrentLineHeaderPrefix) {
-        doc.removeCurrentLineHeaderPrefix()
-    }
-    doc.insertCurrentLineHeaderPrefix(level)
+    doc.action() {
+        if (doc.hasCurrentLineHeaderPrefix) {
+            doc.removeCurrentLineHeaderPrefix()
+        }
+        doc.insertCurrentLineHeaderPrefix(level)
 
-    if (doc.isNextLineHeaderLine) {
-        doc.safeDeleteNextLine()
+        if (doc.isNextLineHeaderLine) {
+            doc.deleteNextLine()
+        }
     }
 }
