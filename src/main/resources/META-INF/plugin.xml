@@ -39,5 +39,30 @@
             description="Draw a line(---) under a H2 title">
       <keyboard-shortcut keymap="$default" first-keystroke="alt MINUS"/>
     </action>
+    <action id="net.mamansoft.markowl.action.markdown.DrawH1PrefixAction"
+            class="net.mamansoft.markowl.action.markdown.DrawH1PrefixAction" text="Markowl: Draw H1 Prefix"
+            description="Draw a prefix(#) before a H1 title">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt 1"/>
+    </action>
+    <action id="net.mamansoft.markowl.action.markdown.DrawH2PrefixAction"
+            class="net.mamansoft.markowl.action.markdown.DrawH2PrefixAction" text="Markowl: Draw H2 Prefix"
+            description="Draw a prefix(##) before a H2 title">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt 2"/>
+    </action>
+    <action id="net.mamansoft.markowl.action.markdown.DrawH3PrefixAction"
+            class="net.mamansoft.markowl.action.markdown.DrawH3PrefixAction" text="Markowl: Draw H3 Prefix"
+            description="Draw a prefix(###) before a H3 title">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt 3"/>
+    </action>
+    <action id="net.mamansoft.markowl.action.markdown.DrawH4PrefixAction"
+            class="net.mamansoft.markowl.action.markdown.DrawH4PrefixAction" text="Markowl: Draw H4 Prefix"
+            description="Draw a prefix(####) before a H4 title">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt 4"/>
+    </action>
+    <action id="net.mamansoft.markowl.action.markdown.DrawH5PrefixAction"
+            class="net.mamansoft.markowl.action.markdown.DrawH5PrefixAction" text="Markowl: Draw H5 Prefix"
+            description="Draw a prefix(#####) before a H5 title">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt 5"/>
+    </action>
   </actions>
 </idea-plugin>

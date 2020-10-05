@@ -26,8 +26,12 @@ class OwlDocument constructor(e: AnActionEvent) {
         get() = this.editor.visualToLogicalPosition(this.currentCaret.selectionEndPosition).line
     val isLastLine: Boolean
         get() = this.currentLine == this.lastLine
+    val currentLineRange: TextRange
+        get() =  DocumentUtil.getLineTextRange(this.document, this.currentLine)
     val currentLineText: String
         get() = getTextByLine(this.currentLine)
+    val currentLineStartOffset: Int
+        get() = DocumentUtil.getLineStartOffset(this.currentCaret.offset, this.editor.document)
     val currentLineEndOffset: Int
         get() = DocumentUtil.getLineEndOffset(this.currentCaret.offset, this.editor.document)
     val nextLineOffset: Int
@@ -37,6 +41,14 @@ class OwlDocument constructor(e: AnActionEvent) {
     val nextLineText: String?
         get() = if (this.isLastLine) null else this.getTextByRange(this.nextLineRange)
 
+    // Specific domains
+    val hasCurrentLineHeaderPrefix: Boolean
+        get() = Regex("^#{1,5} .+$").matches(this.currentLineText)
+    val isNextLineHeaderLine: Boolean
+        get() = Regex("^(=+|-+)$").matches(this.nextLineText!!)
+    val hasNextLine: Boolean
+        get() = this.nextLineText != null
+    // ...
 
     fun getTextByRange(range: TextRange): String = this.document.getText(range)
     fun getTextByLine(line: Int): String = this.document.getText(DocumentUtil.getLineTextRange(this.document, line))
@@ -51,6 +63,20 @@ class OwlDocument constructor(e: AnActionEvent) {
 
     fun safeReplaceToNextLine(text: String) = this.safeReplace(nextLineRange, text)
 
+    fun safeDelete(range: TextRange) {
+        WriteCommandAction.runWriteCommandAction(this.project) {
+            this.editor.document.deleteString(range.startOffset, range.endOffset)
+        }
+    }
+
+    fun safeDeleteNextLine() = this.safeDelete(nextLineRange)
+
+    fun safeInsertToStartOfLine(text: String) {
+        WriteCommandAction.runWriteCommandAction(this.project) {
+            this.editor.document.insertString(currentLineStartOffset, text)
+        }
+    }
+
     fun safeInsertToNextLine(text: String) {
         WriteCommandAction.runWriteCommandAction(this.project) {
             this.editor.document.insertString(currentLineEndOffset, "\n${text}")
@@ -60,5 +86,14 @@ class OwlDocument constructor(e: AnActionEvent) {
     fun moveEOF() {
         this.currentCaret.moveToOffset(this.lastLineOffset)
     }
+
+    // Specific domains
+    fun removeCurrentLineHeaderPrefix() {
+        safeReplace(this.currentLineRange, this.currentLineText.replace(Regex("^#{1,5} "), ""))
+    }
+    fun insertCurrentLineHeaderPrefix(level: Int) {
+        safeInsertToStartOfLine("#".repeat(level) + " ")
+    }
+    // ...
 }
 

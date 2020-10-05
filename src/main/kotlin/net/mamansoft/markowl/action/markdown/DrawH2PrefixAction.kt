@@ -4,12 +4,12 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import net.mamansoft.markowl.domain.OwlDocument
-import net.mamansoft.markowl.domain.drawHeaderLine
+import net.mamansoft.markowl.domain.drawHeaderPrefix
 
-class DrawH1LineAction : AnAction() {
+class DrawH2PrefixAction : AnAction() {
     override fun update(e: AnActionEvent) {
         e.presentation.isEnabledAndVisible = e.project != null && e.getData(CommonDataKeys.EDITOR) != null
     }
 
-    override fun actionPerformed(e: AnActionEvent) = drawHeaderLine(OwlDocument(e), "=")
+    override fun actionPerformed(e: AnActionEvent) = drawHeaderPrefix(OwlDocument(e), 2)
 }
