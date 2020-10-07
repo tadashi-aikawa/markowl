@@ -64,7 +64,7 @@ gradle buildPlugin
 
 ### Release
 
-- [ ] Update `plugin.xml` (OPTIONAL)
+- [ ] Update `plugin.xml` and commit (OPTIONAL)
 - [ ] Update `build.gradle`
     - [ ] changeNotes
 - [ ] make release version=x.y.z
