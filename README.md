@@ -5,6 +5,8 @@ Markdown extended plugin for JetBrains IDEs and owl🦉
 
 ![](docs/images/demo.gif)
 
+<script defer src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js"></script>
+
 
 Features
 --------
