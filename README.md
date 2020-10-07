@@ -9,16 +9,42 @@ Markdown extended plugin for JetBrains IDEs and owl🦉
 Features
 --------
 
-| Action            | Demo                                  | Default Shortcut |
-| ----------------- | ------------------------------------- | ---------------- |
-| Format Table      | ![](docs/images/format-table.gif)     | `Alt + ;`        |
-| Draw H1 Line      | ![](docs/images/draw-header-line.gif) | `Alt + -`        |
-| Draw H2 Line      | ![](docs/images/draw-header-line.gif) | `Alt + =`        |
-
 Support encodings
 
 * UTF-8
 * SJIS
+
+
+### Format Table
+
+![](docs/images/format-table.gif)
+
+| Action         | Default shortcut key |
+| -------------- | -------------------- |
+| Format Table   | `Alt + ;`            |
+
+
+### Draw Header Line
+
+![](docs/images/draw-header-line.gif)
+
+| Action       | Default shortcut key |
+| ------------ | -------------------- |
+| Draw H1 Line | `Alt + -`            |
+| Draw H2 Line | `Alt + =`            |
+
+
+### Draw Header Prefix
+
+![](docs/images/draw-header-prefix.gif)
+
+| Action         | Default shortcut key |
+| -------------- | -------------------- |
+| Draw H1 Prefix | `Alt + 1`            |
+| Draw H2 Prefix | `Alt + 2`            |
+| Draw H3 Prefix | `Alt + 3`            |
+| Draw H4 Prefix | `Alt + 4`            |
+| Draw H5 Prefix | `Alt + 5`            |
 
 
 For developers
