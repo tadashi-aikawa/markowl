@@ -52,7 +52,7 @@ FAQ
 
 ### How can I change shortcut keys? I can't or don't want to use default shortcut keys
 
-You can configure them in `Keymap`. Please see an official documentation for details.
+You can configure them in `Keymap`. Please see the official documentation for details.
 
 ex: IntelliJ IDEA: [Keymap \- Help \| IntelliJ IDEA](https://www.jetbrains.com/help/idea/settings-keymap.html)
 
