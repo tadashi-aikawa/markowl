@@ -43,11 +43,13 @@ class OwlDocument constructor(e: AnActionEvent) {
 
     // Specific domains
     val hasCurrentLineHeaderPrefix: Boolean
-        get() = Regex("^#{1,5} .+$").matches(this.currentLineText)
+        get() = Regex("^#{1,5}.*$").matches(this.currentLineText)
     val hasNextLine: Boolean
         get() = this.nextLineText != null
     val isNextLineHeaderLine: Boolean
         get() = if (this.hasNextLine) Regex("^(=+|-+)$").matches(this.nextLineText!!) else false
+    val isCurrentLineEmpty: Boolean
+        get() = Regex("^ *$").matches(this.currentLineText)
     // ...
 
     fun getTextByRange(range: TextRange): String = this.document.getText(range)
@@ -77,13 +79,17 @@ class OwlDocument constructor(e: AnActionEvent) {
         this.editor.document.insertString(currentLineEndOffset, "\n${text}")
     }
 
+    fun moveToCurrentLineEnd() {
+        this.currentCaret.moveToOffset(this.currentLineEndOffset)
+    }
+
     fun moveEOF() {
         this.currentCaret.moveToOffset(this.lastLineOffset)
     }
 
     // Specific domains
     fun removeCurrentLineHeaderPrefix() {
-        replace(currentLineRange, currentLineText.replace(Regex("^#{1,5} "), ""))
+        replace(currentLineRange, currentLineText.replace(Regex("^#{1,5} ?"), ""))
     }
 
     fun insertCurrentLineHeaderPrefix(level: Int) {

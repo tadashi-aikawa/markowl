@@ -29,7 +29,12 @@ fun drawHeaderPrefix(doc: OwlDocument, level: Int) {
         if (doc.hasCurrentLineHeaderPrefix) {
             doc.removeCurrentLineHeaderPrefix()
         }
+        val wasEmptyLine = doc.isCurrentLineEmpty;
+
         doc.insertCurrentLineHeaderPrefix(level)
+        if (wasEmptyLine) {
+            doc.moveToCurrentLineEnd()
+        }
 
         if (doc.isNextLineHeaderLine) {
             doc.deleteNextLine()
