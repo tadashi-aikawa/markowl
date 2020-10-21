@@ -26,7 +26,7 @@ release: guard-version build ## make release version=x.y.z
 
 	@echo 3. Commit
 	@git add build.gradle
-	@git commit -m ":package: Version $(version)"
+	@git commit -m "📦 Version $(version)"
 
 	@echo 4. Tagged
 	git tag v$(version) -m v$(version)

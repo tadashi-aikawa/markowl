@@ -84,4 +84,4 @@ gradle buildPlugin
 - [ ] make release version=x.y.z
 - [ ] Upload `build/distributions/markowl-${version}.zip` to [JetBrains market]
 
-[JetBrains market]: https://plugins.jetbrains.com/plugin/edit?pluginId=14116
+[JetBrains market]: https://plugins.jetbrains.com/plugin/14116-markowl
