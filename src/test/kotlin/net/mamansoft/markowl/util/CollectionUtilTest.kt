@@ -24,6 +24,24 @@ class EnglishTest(private val arg: String, private val expected: Int) {
 }
 
 @RunWith(Parameterized::class)
+class Latin1Test(private val arg: String, private val expected: Int) {
+
+    companion object {
+        @JvmStatic
+        @Parameterized.Parameters
+        fun data() = listOf(
+            arrayOf("äöü²", 4),
+            arrayOf("¡ÿ", 2)
+        )
+    }
+
+    @Test
+    fun test() {
+        assertEquals(expected, width(arg))
+    }
+}
+
+@RunWith(Parameterized::class)
 class JapaneseTest(private val arg: String, private val expected: Int) {
 
     companion object {
