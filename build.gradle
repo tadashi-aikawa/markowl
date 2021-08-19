@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'net.mamansoft'
-version '0.7.1'
+version '0.7.2'
 
 sourceCompatibility = 1.8
 
@@ -33,7 +33,7 @@ compileTestKotlin {
 patchPluginXml {
   changeNotes """
       <ul>
-        <li>[Improvement] Improve cursor movement after commands</li>
+        <li>[Bugfix] Fix a bug that `0xa1..0xff` is regarded as 2 width.</li>
       </ul>
     """
 }
