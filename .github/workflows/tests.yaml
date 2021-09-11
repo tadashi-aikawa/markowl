@@ -23,8 +23,8 @@ jobs:
           java-version: '11'
           cache: 'gradle'
 
-      - run: task build
-      - run: task test
+      - run: ./gradlew buildPluginask
+      - run: ./gradlew test
 
       - name: "Discord notification (not success)"
         uses: rjstone/discord-webhook-notify@v1
