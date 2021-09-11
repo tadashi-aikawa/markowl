@@ -22,10 +22,11 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
           cache: 'gradle'
-
       - run: chmod +x ./gradlew
-      - run: ./gradlew buildPlugin
-      - run: ./gradlew test
+      - run: export PATH=${PATH}:$(pwd)
+
+      - run: task build
+      - run: task test
 
       - name: "Discord notification (not success)"
         uses: rjstone/discord-webhook-notify@v1

@@ -13,17 +13,17 @@ tasks:
   dev:
     desc: Run on development instance
     cmds:
-      - ./gradlew runIde
+      - gradlew runIde
 
   build:
     desc: Build distribution
     cmds:
-      - ./gradlew buildPlugin
+      - gradlew buildPlugin
 
   test:
     desc: Unit tests
     cmds:
-      - ./gradlew test
+      - gradlew test
 
   release:
     desc: |
