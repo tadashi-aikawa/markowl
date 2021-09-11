@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'net.mamansoft'
-version '0.7.2'
+version '0.7.3'
 
 sourceCompatibility = 1.8
 
@@ -33,7 +33,7 @@ compileTestKotlin {
 patchPluginXml {
   changeNotes """
       <ul>
-        <li>[Bugfix] Fix a bug that `0xa1..0xff` is regarded as 2 width.</li>
+        <li>[Bugfix] Fix a bug that occurs errors when the current line is empty and attempt to format the table.</li>
       </ul>
     """
 }
