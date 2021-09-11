@@ -24,6 +24,7 @@ jobs:
           cache: 'gradle'
       - run: chmod +x ./gradlew
       - run: export PATH=${PATH}:$(pwd)
+      - run: echo ${PATH}
 
       - run: task build
       - run: task test
