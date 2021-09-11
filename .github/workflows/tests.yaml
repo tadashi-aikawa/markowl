@@ -22,9 +22,7 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
           cache: 'gradle'
-      - run: chmod +x ./gradlew
-      - run: export PATH=${PATH}:$(pwd) && echo ${PATH}
-      - run: echo ${PATH}
+      - run: chmod +x gradlew && cp gradlew /usr/local/bin/
 
       - run: task build
       - run: task test
