@@ -23,7 +23,7 @@ jobs:
           java-version: '11'
           cache: 'gradle'
 
-      - run: ./gradlew buildPluginask
+      - run: ./gradlew buildPlugin
       - run: ./gradlew test
 
       - name: "Discord notification (not success)"
