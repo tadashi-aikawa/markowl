@@ -43,6 +43,9 @@ class FormatTableAction : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
         val doc = OwlDocument(e)
+        if (doc.isCurrentLineEmpty) {
+            return
+        }
 
         doc.action {
             val tableRange = getRangeAsTable(doc)
