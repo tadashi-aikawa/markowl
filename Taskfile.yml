@@ -1,6 +1,15 @@
 # Required powershell
 version: "3"
 
+vars:
+  GRADLEW:
+    sh: |
+      if [ {{OS}} = "windows" ]; then
+        echo "gradlew"
+      else
+        echo "./gradlew"
+      fi
+
 tasks:
   default:
     - task: help
@@ -13,17 +22,17 @@ tasks:
   dev:
     desc: Run on development instance
     cmds:
-      - gradlew runIde
+      - "{{.GRADLEW}} runIde"
 
   build:
     desc: Build distribution
     cmds:
-      - gradlew buildPlugin
+      - "{{.GRADLEW}} buildPlugin"
 
   test:
     desc: Unit tests
     cmds:
-      - gradlew test
+      - "{{.GRADLEW}} test"
 
   release:
     desc: |

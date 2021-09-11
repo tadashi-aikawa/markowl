@@ -22,7 +22,7 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
           cache: 'gradle'
-      - run: chmod +x gradlew && cp gradlew /usr/local/bin/
+      - run: chmod +x gradlew
 
       - run: task build
       - run: task test
