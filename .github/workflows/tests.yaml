@@ -23,7 +23,7 @@ jobs:
           java-version: '11'
           cache: 'gradle'
       - run: chmod +x ./gradlew
-      - run: export PATH=${PATH}:$(pwd)
+      - run: export PATH=${PATH}:$(pwd) && echo ${PATH}
       - run: echo ${PATH}
 
       - run: task build
