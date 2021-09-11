@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - ".github/**/*"
+      - "Taskfile.yml"
       - "src/*"
       - "src/**/*"
   schedule:
