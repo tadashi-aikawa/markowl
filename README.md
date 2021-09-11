@@ -64,16 +64,24 @@ ex: IntelliJ IDEA: [Keymap \- Help \| IntelliJ IDEA](https://www.jetbrains.com/h
 For developers
 --------------
 
+Before, you need to install [Task].
+
 ### Run on development instance
 
 ```console
-gradle runIde
+task dev
 ```
 
 ### Build distribution
 
 ```console
-gradle buildPlugin
+task build
+```
+
+### Test
+
+```console
+task test
 ```
 
 ### Release
@@ -81,7 +89,8 @@ gradle buildPlugin
 - [ ] Update `plugin.xml` and commit (OPTIONAL)
 - [ ] Update `build.gradle`
     - [ ] changeNotes
-- [ ] make release version=x.y.z
+- [ ] `task release VERSION=x.y.z`
 - [ ] Upload `build/distributions/markowl-${version}.zip` to [JetBrains market]
 
 [JetBrains market]: https://plugins.jetbrains.com/plugin/14116-markowl
+[task]: https://github.com/go-task/task

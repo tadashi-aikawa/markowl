@@ -1,0 +1,50 @@
+# Required powershell
+version: "3"
+
+tasks:
+  default:
+    - task: help
+
+  help:
+    silent: true
+    cmds:
+      - task -l
+
+  dev:
+    desc: Run on development instance
+    cmds:
+      - gradlew runIde
+
+  build:
+    desc: Build distribution
+    cmds:
+      - gradlew buildPlugin
+
+  test:
+    desc: Unit tests
+    cmds:
+      - gradlew test
+
+  release:
+    desc: |
+      Increment version, Build, Commit/Tagged and Push
+          ∟ [Ex] task release VERSION=1.2.3
+    deps:
+      - build
+      - test
+    cmds:
+      - git fetch --all
+      - git checkout master
+      - git pull
+      - sed -ri "s/^version .+/version '{{.VERSION}}'/g" build.gradle
+      - task: build
+      - git add build.gradle
+      - git commit -m "📦 Version {{.VERSION}}"
+      - git tag v{{.VERSION}} -m v{{.VERSION}}
+      - git push --tags
+      - git push
+      - echo "✨ Upload build/distributions/markowl-{{.VERSION}}.zip to https://plugins.jetbrains.com/plugin/14116-markowl"
+    preconditions:
+      - sh: "[ {{.VERSION}} != '' ]"
+        msg: "VERSION is required."
+
